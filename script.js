@@ -3,30 +3,55 @@ document.addEventListener('DOMContentLoaded', function () {
     showContent("gameselector-valorant");
 
     document.getElementById('havocdpi').addEventListener('input', function () {
-        document.getElementById('havocdpivalue').innerHTML = this.value;
+        document.getElementById('havocdpivalue').value = this.value;
         multiply();
     });
 
+    document.getElementById('havocdpivalue').addEventListener('input', function () {
+        document.getElementById('havocdpi').value = this.value;
+        multiply();
+    });
+
+
     document.getElementById('valorantsens').addEventListener('input', function () {
-        document.getElementById('valorantsensvalue').innerHTML = this.value;
+        document.getElementById('valorantsensvalue').value = this.value;
         multiply();
     });
 
     document.getElementById('valorantdpi').addEventListener('input', function () {
-        document.getElementById('valorantdpivalue').innerHTML = this.value;
+        document.getElementById('valorantdpivalue').value = this.value;
+        multiply();
+    });
+
+    document.getElementById('valorantsensvalue').addEventListener('input', function () {
+        document.getElementById('valorantsens').value = this.value;
+        multiply();
+    });
+
+    document.getElementById('valorantdpivalue').addEventListener('input', function () {
+        document.getElementById('valorantdpi').value = this.value;
         multiply();
     });
 
     document.getElementById('cs2sens').addEventListener('input', function () {
-        document.getElementById('cs2sensvalue').innerHTML = this.value;
+        document.getElementById('cs2sensvalue').value = this.value;
         multiply();
     });
 
     document.getElementById('cs2dpi').addEventListener('input', function () {
-        document.getElementById('cs2dpivalue').innerHTML = this.value;
+        document.getElementById('cs2dpivalue').value = this.value;
         multiply();
     });
 
+    document.getElementById('cs2sensvalue').addEventListener('input', function () {
+        document.getElementById('cs2sens').value = this.value;
+        multiply();
+    });
+
+    document.getElementById('cs2dpivalue').addEventListener('input', function () {
+        document.getElementById('cs2dpi').value = this.value;
+        multiply();
+    });
 });
 
 function multiply() {
@@ -59,4 +84,4 @@ function showContent(selectedValue) {
 
     // Show the selected content based on the dropdown value
     document.getElementById(selectedValue).style.display = 'block';
-  }
+}
