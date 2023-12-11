@@ -1,13 +1,36 @@
 document.addEventListener('DOMContentLoaded', function () {
     multiply();
-    showGameSelectorContent(localStorage.getItem('gameselector'));
-    document.getElementById('gameselector').value = localStorage.getItem('gameselector');
 
-    showUnitSelectorContent(localStorage.getItem('unitselector'));
-    document.getElementById('unitselector').value = localStorage.getItem('unitselector');
+    if (localStorage.getItem('gameselector') === null) {
 
-    darkModeToggle(localStorage.getItem('themeselector'));
-    document.getElementById('themeselector').value = localStorage.getItem('themeselector');
+        showGameSelectorContent('gameselector-valorant');
+        document.getElementById('gameselector').value = 'gameselector-valorant';
+    }
+    else {
+        showGameSelectorContent(localStorage.getItem('gameselector'));
+        document.getElementById('gameselector').value = localStorage.getItem('gameselector');
+    }
+
+
+    if (localStorage.getItem('unitselector') === null) {
+
+        showGameSelectorContent('gameselector-valorant');
+        document.getElementById('unitselector').value = 'gameselector-valorant';
+    }
+    else {
+        showGameSelectorContent(localStorage.getItem('unitselector'));
+        document.getElementById('unitselector').value = localStorage.getItem('unitselector');
+    }
+
+    if (localStorage.getItem('themeselector') === null) {
+
+        showGameSelectorContent('themeselector-light');
+        document.getElementById('themeselector').value = 'themeselector-light';
+    }
+    else {
+        showGameSelectorContent(localStorage.getItem('themeselector'));
+        document.getElementById('themeselector').value = localStorage.getItem('themeselector');
+    }
 
 
     document.getElementById('havocdpi').addEventListener('input', function () {
@@ -83,7 +106,7 @@ function multiply() {
     document.getElementById('cs2result').innerHTML = 'Havoc sens - ' + Math.round(cs2tohavocsens * 100) / 100;
 
     // 360 distance results - valorant
-    var val360centimeters = 13067/(valorantsens * valorantdpi);
+    var val360centimeters = 13067 / (valorantsens * valorantdpi);
     var val360inches = val360centimeters / 2.54000562223471;
 
     document.getElementById('valorant360distanceinches').innerHTML = '360° Distance - ' + val360inches + 'in';
@@ -91,7 +114,7 @@ function multiply() {
 
 
     // 360 distance results - cs2
-    var cs2360centimeters = 41560/(cs2sens * cs2dpi);
+    var cs2360centimeters = 41560 / (cs2sens * cs2dpi);
     var cs2360inches = cs2360centimeters / 2.54000562223471;
 
     document.getElementById('cs2360distanceinches').innerHTML = '360° Distance - ' + cs2360inches + 'in';
