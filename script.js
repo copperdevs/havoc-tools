@@ -1,8 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
     multiply();
-    showGameSelectorContent('gameselector-valorant');
-    showUnitSelectorContent('unitselector-inches');
-    darkModeToggle('themeselector-light');
+    showGameSelectorContent(localStorage.getItem('gameselector'));
+    document.getElementById('gameselector').value = localStorage.getItem('gameselector');
+
+    showUnitSelectorContent(localStorage.getItem('unitselector'));
+    document.getElementById('unitselector').value = localStorage.getItem('unitselector');
+
+    darkModeToggle(localStorage.getItem('themeselector'));
+    document.getElementById('themeselector').value = localStorage.getItem('themeselector');
+
 
     document.getElementById('havocdpi').addEventListener('input', function () {
         document.getElementById('havocdpivalue').value = this.value;
@@ -99,6 +105,8 @@ function showGameSelectorContent(selectedValue) {
 
     // Show the selected content based on the dropdown value
     document.getElementById(selectedValue).style.display = 'block';
+
+    localStorage.setItem('gameselector', selectedValue);
 }
 
 function showUnitSelectorContent(selectedValue) {
@@ -116,6 +124,8 @@ function showUnitSelectorContent(selectedValue) {
         document.getElementById('valorant360distancecentimeters').style.display = 'block';
         document.getElementById('cs2360distancecentimeters').style.display = 'block';
     }
+
+    localStorage.setItem('unitselector', selectedValue);
 }
 
 function darkModeToggle(selectedValue) {
@@ -135,4 +145,6 @@ function darkModeToggle(selectedValue) {
             document.body.classList.add('body-light');
             break;
     }
+
+    localStorage.setItem("themeselector", selectedValue);
 }
