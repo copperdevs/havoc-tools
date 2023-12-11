@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     multiply();
-    showContent("gameselector-valorant");
+    showGameSelectorContent('gameselector-valorant');
+    showUnitSelectorContent('unitselector-inches');
 
     document.getElementById('havocdpi').addEventListener('input', function () {
         document.getElementById('havocdpivalue').value = this.value;
@@ -67,21 +68,51 @@ function multiply() {
     var cs2sens = document.getElementById('cs2dpi').value;
 
 
-    // results
+    // sens results
     var valtohavocsens = (valorantsens * 0.65 * 3.182) * (valorantdpi / havocdpi);
-    // document.getElementById('valorantresult').innerHTML = 'Valorant to Havoc sens - ' + Math.round(valtohavocsens * 100)/100;
     document.getElementById('valorantresult').innerHTML = 'Havoc sens - ' + Math.round(valtohavocsens * 100) / 100;
 
     var cs2tohavocsens = (0.41 * cs2sens) * (cs2dpi / havocdpi);
-    // document.getElementById('cs2result').innerHTML = 'Counter Strike 2 to Havoc sens - ' + Math.round(cs2tohavocsens * 100)/100;
     document.getElementById('cs2result').innerHTML = 'Havoc sens - ' + Math.round(cs2tohavocsens * 100) / 100;
+
+    // 360 distance results - valorant
+    var val360centimeters = (valorantsens * valorantdpi) / 195.5;
+    var val360inches = val360centimeters / 2.54000562223471;
+
+    document.getElementById('valorant360distanceinches').innerHTML = '360° Distance - ' + val360inches + 'in';
+    document.getElementById('valorant360distancecentimeters').innerHTML = '360° Distance - ' + val360centimeters + 'cm';
+
+
+    // 360 distance results - cs2
+    var cs2360centimeters = (cs2sens * cs2dpi) / 61.8;
+    var cs2360inches = cs2360centimeters / 2.54000562223471;
+
+    document.getElementById('cs2360distanceinches').innerHTML = '360° Distance - ' + cs2360inches + 'in';
+    document.getElementById('cs2360distancecentimeters').innerHTML = '360° Distance - ' + cs2360centimeters + 'cm';
 }
 
-function showContent(selectedValue) {
+function showGameSelectorContent(selectedValue) {
     // Hide all content elements
     document.getElementById('gameselector-valorant').style.display = 'none';
     document.getElementById('gameselector-cs2').style.display = 'none';
 
     // Show the selected content based on the dropdown value
     document.getElementById(selectedValue).style.display = 'block';
+}
+
+function showUnitSelectorContent(selectedValue) {
+    document.getElementById('valorant360distanceinches').style.display = 'none';
+    document.getElementById('valorant360distancecentimeters').style.display = 'none';
+    document.getElementById('cs2360distanceinches').style.display = 'none';
+    document.getElementById('cs2360distancecentimeters').style.display = 'none';
+
+    if (selectedValue == 'unitselector-inches') {
+        document.getElementById('valorant360distanceinches').style.display = 'block';
+        document.getElementById('cs2360distanceinches').style.display = 'block';
+    }
+
+    if (selectedValue == 'unitselector-centimeters') {
+        document.getElementById('valorant360distancecentimeters').style.display = 'block';
+        document.getElementById('cs2360distancecentimeters').style.display = 'block';
+    }
 }

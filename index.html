@@ -38,9 +38,17 @@
     <br>
 
     <label for="gameselector">Select a game:</label>
-    <select id="gameselector" onchange="showContent(this.value)">
+    <select id="gameselector" onchange="showGameSelectorContent(this.value)">
         <option value="gameselector-valorant">Valorant</option>
         <option value="gameselector-cs2">Counter Strike 2</option>
+    </select>
+
+    <br>
+
+    <label for="unitselector">Select a unit:</label>
+    <select id="unitselector" onchange="showUnitSelectorContent(this.value)">
+        <option value="unitselector-inches">Inches</option>
+        <option value="unitselector-centimeters">Centimeters</option>
     </select>
 
     <!--  -->
@@ -59,6 +67,8 @@
         <input type="number" id="valorantdpivalue" name="valorantdpivalue" min="0" max="2000" value="800" step="0.1">
 
         <div id="valorantresult">Havoc sens - 2.07</div>
+        <div id="valorant360distanceinches">360° Distance - 0</div>
+        <div id="valorant360distancecentimeters">360° Distance - 0</div>
     </div>
 
     <div id="gameselector-cs2">
@@ -75,6 +85,8 @@
         <input type="number" id="cs2dpivalue" name="cs2dpivalue" min="0" max="2000" value="800" step="0.1">
 
         <div id="cs2result">Havoc sens - 0.41</div>
+        <div id="cs2360distanceinches">360° Distance - 0</div>
+        <div id="cs2360distancecentimeters">360° Distance - 0</div>
     </div>
 
     <br> <br>
