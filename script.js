@@ -14,21 +14,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (localStorage.getItem('unitselector') === null) {
 
-        showGameSelectorContent('gameselector-valorant');
-        document.getElementById('unitselector').value = 'gameselector-valorant';
+        showUnitSelectorContent('gameselector-valorant');
+        document.getElementById('unitselector').value = 'unitselector-inches';
     }
     else {
-        showGameSelectorContent(localStorage.getItem('unitselector'));
+        showUnitSelectorContent(localStorage.getItem('unitselector'));
         document.getElementById('unitselector').value = localStorage.getItem('unitselector');
     }
 
     if (localStorage.getItem('themeselector') === null) {
 
-        showGameSelectorContent('themeselector-light');
+        themeSelector('themeselector-light');
         document.getElementById('themeselector').value = 'themeselector-light';
     }
     else {
-        showGameSelectorContent(localStorage.getItem('themeselector'));
+        themeSelector(localStorage.getItem('themeselector'));
         document.getElementById('themeselector').value = localStorage.getItem('themeselector');
     }
 
@@ -151,7 +151,7 @@ function showUnitSelectorContent(selectedValue) {
     localStorage.setItem('unitselector', selectedValue);
 }
 
-function darkModeToggle(selectedValue) {
+function themeSelector(selectedValue) {
     document.body.classList.remove('body-light');
     document.body.classList.remove('body-dark');
 
