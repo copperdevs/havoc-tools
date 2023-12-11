@@ -1,0 +1,52 @@
+/* https://coolors.co/2e3138-f1f0ea-ef233c-3a86ff-8338ec */
+
+:root 
+{
+    --TextColor: #2E3138;
+    --BackgroundColor: #F1F0EA;
+
+    --Red: #EF233C;
+    --Blue: #3A86FF;
+    --Purple: #8338EC;
+
+    --Font: 'Montserrat', sans-serif;
+}
+
+body 
+{
+    margin: 40px auto;
+    max-width: 650px;
+    line-height: 1.6;
+    font-size: 18px;
+    padding: 0 10px;
+    font-family: var(--Font);
+    background-color: var(--BackgroundColor);
+    color: var(--TextColor);
+}
+
+h1,h2,h3 
+{
+    line-height: 1.2;
+}
+
+a:link 
+{
+    text-decoration: none;
+    color: var(--Blue);
+}
+  
+a:visited 
+{
+    text-decoration: none;
+    color: var(--Purple);
+}
+  
+a:hover 
+{
+    text-decoration: underline;
+}
+  
+a:active 
+{
+    text-decoration: underline;
+}
