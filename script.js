@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     multiply();
     showGameSelectorContent('gameselector-valorant');
     showUnitSelectorContent('unitselector-inches');
+    darkModeToggle('themeselector-light');
 
     document.getElementById('havocdpi').addEventListener('input', function () {
         document.getElementById('havocdpivalue').value = this.value;
@@ -114,5 +115,24 @@ function showUnitSelectorContent(selectedValue) {
     if (selectedValue == 'unitselector-centimeters') {
         document.getElementById('valorant360distancecentimeters').style.display = 'block';
         document.getElementById('cs2360distancecentimeters').style.display = 'block';
+    }
+}
+
+function darkModeToggle(selectedValue) {
+    document.body.classList.remove('body-light');
+    document.body.classList.remove('body-dark');
+
+    switch (selectedValue) {
+        case 'themeselector-light':
+            document.body.classList.add('body-light');
+            break;
+
+        case 'themeselector-dark':
+            document.body.classList.add('body-dark');
+            break;
+
+        default:
+            document.body.classList.add('body-light');
+            break;
     }
 }

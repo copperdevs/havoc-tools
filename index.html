@@ -29,7 +29,7 @@
 
 </head>
 
-<body>
+<body class="body-light">
     <h1>Settings</h1>
 
     <span>Havoc DPI</span>
@@ -38,7 +38,7 @@
 
     <br>
 
-    <label for="gameselector">Select a game:</label>
+    <label for="gameselector">Game - </label>
     <select id="gameselector" onchange="showGameSelectorContent(this.value)">
         <option value="gameselector-valorant">Valorant</option>
         <option value="gameselector-cs2">Counter Strike 2</option>
@@ -46,10 +46,18 @@
 
     <br>
 
-    <label for="unitselector">Select a unit:</label>
+    <label for="unitselector">Unit - </label>
     <select id="unitselector" onchange="showUnitSelectorContent(this.value)">
         <option value="unitselector-inches">Inches</option>
         <option value="unitselector-centimeters">Centimeters</option>
+    </select>
+
+    <br>
+
+    <label for="themeselector">Theme - </label>
+    <select id="themeselector" onchange="darkModeToggle(this.value)">
+        <option value="themeselector-light">Light</option>
+        <option value="themeselector-dark">Dark</option>
     </select>
 
     <!--  -->

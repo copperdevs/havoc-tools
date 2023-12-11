@@ -12,7 +12,7 @@
 }
 
 
-body {
+.body-light {
     margin: 40px auto;
     max-width: 650px;
     line-height: 1.6;
@@ -21,6 +21,17 @@ body {
     font-family: var(--Font);
     background-color: var(--BackgroundColor);
     color: var(--TextColor);
+}
+
+.body-dark {
+    margin: 40px auto;
+    max-width: 650px;
+    line-height: 1.6;
+    font-size: 18px;
+    padding: 0 10px;
+    font-family: var(--Font);
+    background-color: var(--TextColor);
+    color: var(--BackgroundColor);
 }
 
 h1,
