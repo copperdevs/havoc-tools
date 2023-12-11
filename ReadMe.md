@@ -1,5 +1,5 @@
 
-# havoc-sens
+# Havoc Sensitivity Convertor
 > Simple online convertor for converting your sensitivity from games like [Counter Strike 2](https://store.steampowered.com/app/730/CounterStrike_2/) and [Valorant](https://playvalorant.com/en-us/) to [Havoc](https://store.steampowered.com/app/2149290/Havoc/).
 
 # Currently Supported Games
