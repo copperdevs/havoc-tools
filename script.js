@@ -154,6 +154,8 @@ function showUnitSelectorContent(selectedValue) {
 function themeSelector(selectedValue) {
     document.body.classList.remove('body-light');
     document.body.classList.remove('body-dark');
+    document.body.classList.remove('body-lighter');
+    document.body.classList.remove('body-darker');
 
     switch (selectedValue) {
         case 'themeselector-light':
@@ -162,6 +164,14 @@ function themeSelector(selectedValue) {
 
         case 'themeselector-dark':
             document.body.classList.add('body-dark');
+            break;
+
+        case 'themeselector-lighter':
+            document.body.classList.add('body-lighter');
+            break;
+
+        case 'themeselector-darker':
+            document.body.classList.add('body-darker');
             break;
 
         default:

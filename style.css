@@ -34,6 +34,28 @@
     color: var(--BackgroundColor);
 }
 
+.body-darker {
+    margin: 40px auto;
+    max-width: 650px;
+    line-height: 1.6;
+    font-size: 18px;
+    padding: 0 10px;
+    font-family: var(--Font);
+    background-color: black;
+    color: white;
+}
+
+.body-lighter {
+    margin: 40px auto;
+    max-width: 650px;
+    line-height: 1.6;
+    font-size: 18px;
+    padding: 0 10px;
+    font-family: var(--Font);
+    background-color: white;
+    color: black;
+}
+
 h1,
 h2,
 h3 {
