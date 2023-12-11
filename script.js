@@ -76,14 +76,14 @@ function multiply() {
 
 
     // sens results
-    var valtohavocsens = (valorantsens * 0.65 * 3.182) * (valorantdpi / havocdpi);
+    var valtohavocsens = (valorantsens * 1.44) * (valorantdpi / havocdpi);
     document.getElementById('valorantresult').innerHTML = 'Havoc sens - ' + Math.round(valtohavocsens * 100) / 100;
 
-    var cs2tohavocsens = (0.41 * cs2sens) * (cs2dpi / havocdpi);
+    var cs2tohavocsens = (0.45 * cs2sens) * (cs2dpi / havocdpi);
     document.getElementById('cs2result').innerHTML = 'Havoc sens - ' + Math.round(cs2tohavocsens * 100) / 100;
 
     // 360 distance results - valorant
-    var val360centimeters = (valorantsens * valorantdpi) / 195.5;
+    var val360centimeters = 13067/(valorantsens * valorantdpi);
     var val360inches = val360centimeters / 2.54000562223471;
 
     document.getElementById('valorant360distanceinches').innerHTML = '360° Distance - ' + val360inches + 'in';
@@ -91,7 +91,7 @@ function multiply() {
 
 
     // 360 distance results - cs2
-    var cs2360centimeters = (cs2sens * cs2dpi) / 61.8;
+    var cs2360centimeters = 41560/(cs2sens * cs2dpi);
     var cs2360inches = cs2360centimeters / 2.54000562223471;
 
     document.getElementById('cs2360distanceinches').innerHTML = '360° Distance - ' + cs2360inches + 'in';
