@@ -43,10 +43,10 @@ function multiply() {
 
     // results
     var valtohavocsens = (valorantsens * 0.65 * 3.182) * (valorantdpi / havocdpi);
-    // document.getElementById('valorantresult').innerHTML = 'Valorant to Havoc sens - ' + valtohavocsens;
-    document.getElementById('valorantresult').innerHTML = 'Valorant to Havoc sens - ' + Math.round(valtohavocsens * 100)/100;
+    // document.getElementById('valorantresult').innerHTML = 'Valorant to Havoc sens - ' + Math.round(valtohavocsens * 100)/100;
+    document.getElementById('valorantresult').innerHTML = 'Havoc sens - ' + Math.round(valtohavocsens * 100)/100;
 
     var cs2tohavocsens = (0.41 * cs2sens) * (cs2dpi / havocdpi);
-    // document.getElementById('cs2result').innerHTML = 'Counter Strike 2 to Havoc sens - ' + cs2tohavocsens;
-    document.getElementById('cs2result').innerHTML = 'Counter Strike 2 to Havoc sens - ' + Math.round(cs2tohavocsens * 100)/100;
+    // document.getElementById('cs2result').innerHTML = 'Counter Strike 2 to Havoc sens - ' + Math.round(cs2tohavocsens * 100)/100;
+    document.getElementById('cs2result').innerHTML = 'Havoc sens - ' + Math.round(cs2tohavocsens * 100)/100;
 }
