@@ -56,6 +56,17 @@
     color: black;
 }
 
+.body-discord {
+    margin: 40px auto;
+    max-width: 650px;
+    line-height: 1.6;
+    font-size: 18px;
+    padding: 0 10px;
+    font-family: var(--Font);
+    background-color: #313338;
+    color: #cadbe1;
+}
+
 h1,
 h2,
 h3 {

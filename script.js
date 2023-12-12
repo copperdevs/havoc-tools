@@ -156,6 +156,7 @@ function themeSelector(selectedValue) {
     document.body.classList.remove('body-dark');
     document.body.classList.remove('body-lighter');
     document.body.classList.remove('body-darker');
+    document.body.classList.remove('body-discord');
 
     switch (selectedValue) {
         case 'themeselector-light':
@@ -172,6 +173,10 @@ function themeSelector(selectedValue) {
 
         case 'themeselector-darker':
             document.body.classList.add('body-darker');
+            break;
+
+        case 'themeselector-discord':
+            document.body.classList.add('body-discord');
             break;
 
         default:
