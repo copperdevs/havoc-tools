@@ -3,191 +3,143 @@ const UnitSelectorKey = 'havoctools-unitselector';
 const ThemeSelectorKey = 'havoctools-themeselector';
 
 
+const Themes = new Map();
+Themes.set('themeselector-light', 'body-light');
+Themes.set('themeselector-dark', 'body-dark');
+Themes.set('themeselector-lighter', 'body-lighter');
+Themes.set('themeselector-darker', 'body-darker');
+Themes.set('themeselector-discord', 'body-discord');
+
+function selectorLocalStorageHandler(storageKey, selectorId, defaultSelected) {
+    if (localStorage.getItem(storageKey) === null) {
+
+        showGameSelectorContent(defaultSelected);
+        document.getElementById(selectorId).value = defaultSelected;
+    }
+    else {
+        showGameSelectorContent(localStorage.getItem(storageKey));
+        document.getElementById(selectorId).value = localStorage.getItem(storageKey);
+    }
+}
+
+
 document.addEventListener('DOMContentLoaded', function () {
+    selectorLocalStorageHandler(GameSelectorKey, 'gameselector', 'gameselector-valorant');
+    selectorLocalStorageHandler(UnitSelectorKey, 'unitselector', 'unitselector-inches');
+    selectorLocalStorageHandler(ThemeSelectorKey, 'themeselector', 'themeselector-light');
+
+    showGameSelectorContent(localStorage.getItem(GameSelectorKey));
+    themeSelector(localStorage.getItem(ThemeSelectorKey));
+
     multiply();
-
-    if (localStorage.getItem(GameSelectorKey) === null) {
-
-        showGameSelectorContent('gameselector-valorant');
-        document.getElementById('gameselector').value = 'gameselector-valorant';
-    }
-    else {
-        showGameSelectorContent(localStorage.getItem(GameSelectorKey));
-        document.getElementById('gameselector').value = localStorage.getItem(GameSelectorKey);
-    }
-
-
-    if (localStorage.getItem(UnitSelectorKey) === null) {
-
-        showUnitSelectorContent('gameselector-valorant');
-        document.getElementById('unitselector').value = 'unitselector-inches';
-    }
-    else {
-        showUnitSelectorContent(localStorage.getItem(UnitSelectorKey));
-        document.getElementById('unitselector').value = localStorage.getItem(UnitSelectorKey);
-    }
-
-    if (localStorage.getItem(ThemeSelectorKey) === null) {
-
-        themeSelector('themeselector-light');
-        document.getElementById('themeselector').value = 'themeselector-light';
-    }
-    else {
-        themeSelector(localStorage.getItem(ThemeSelectorKey));
-        document.getElementById('themeselector').value = localStorage.getItem(ThemeSelectorKey);
-    }
-
-
-    document.getElementById('havocdpi').addEventListener('input', function () {
-        document.getElementById('havocdpivalue').value = this.value;
-        multiply();
-    });
-
-    document.getElementById('havocdpivalue').addEventListener('input', function () {
-        document.getElementById('havocdpi').value = this.value;
-        multiply();
-    });
-
-
-    document.getElementById('valorantsens').addEventListener('input', function () {
-        document.getElementById('valorantsensvalue').value = this.value;
-        multiply();
-    });
-
-    document.getElementById('valorantdpi').addEventListener('input', function () {
-        document.getElementById('valorantdpivalue').value = this.value;
-        multiply();
-    });
-
-    document.getElementById('valorantsensvalue').addEventListener('input', function () {
-        document.getElementById('valorantsens').value = this.value;
-        multiply();
-    });
-
-    document.getElementById('valorantdpivalue').addEventListener('input', function () {
-        document.getElementById('valorantdpi').value = this.value;
-        multiply();
-    });
-
-    document.getElementById('cs2sens').addEventListener('input', function () {
-        document.getElementById('cs2sensvalue').value = this.value;
-        multiply();
-    });
-
-    document.getElementById('cs2dpi').addEventListener('input', function () {
-        document.getElementById('cs2dpivalue').value = this.value;
-        multiply();
-    });
-
-    document.getElementById('cs2sensvalue').addEventListener('input', function () {
-        document.getElementById('cs2sens').value = this.value;
-        multiply();
-    });
-
-    document.getElementById('cs2dpivalue').addEventListener('input', function () {
-        document.getElementById('cs2dpi').value = this.value;
-        multiply();
-    });
 });
 
 function multiply() {
     // havoc
     var havocdpi = document.getElementById('havocdpi').value;
 
-    // valorant
-    var valorantdpi = document.getElementById('valorantsens').value;
-    var valorantsens = document.getElementById('valorantdpi').value;
+    var gameDpi = document.getElementById('gamedpi').value;
+    var gameSens = document.getElementById('gamesens').value;
 
-    // cs2
-    var cs2dpi = document.getElementById('cs2sens').value;
-    var cs2sens = document.getElementById('cs2dpi').value;
+    var sensResult = 0;
+    var distanceResult = 0;
 
+    // sens math
+    switch (document.getElementById('gameselector').value) {
+        case 'gameselector-valorant':
+            sensResult = (gameSens * 1.44) * (gameDpi / havocdpi);
+            break;
+        case 'gameselector-cs2':
+            sensResult = (0.45 * gameSens) * (gameDpi / havocdpi);
+            break;
+        default:
+            sensResult = (gameSens * 1.44) * (gameDpi / havocdpi);
+            break;
+    }
 
-    // sens results
-    var valtohavocsens = (valorantsens * 1.44) * (valorantdpi / havocdpi);
-    document.getElementById('valorantresult').innerHTML = 'Havoc sens - ' + Math.round(valtohavocsens * 100) / 100;
+    // distance math
+    switch (document.getElementById('unitselector').value) {
+        case 'unitselector-inches':
+            switch (document.getElementById('gameselector').value) {
+                case 'gameselector-valorant':
+                    distanceResult = (13067 / (gameSens * gameDpi)) / 2.54000562223471;
+                    break;
+                case 'gameselector-cs2':
+                    distanceResult = (41560 / (gameSens * gameDpi)) / 2.54000562223471;
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case 'unitselector-centimeters':
+            switch (document.getElementById('gameselector').value) {
+                case 'gameselector-valorant':
+                    distanceResult = 13067 / (gameSens * gameDpi);
+                    break;
+                case 'gameselector-cs2':
+                    distanceResult = 41560 / (gameSens * gameDpi);
+                    break;
+                default:
+                    break;
+            }
+            break;
+        default:
+            switch (document.getElementById('gameselector').value) {
+                case 'gameselector-valorant':
+                    distanceResult = (13067 / (gameSens * gameDpi)) / 2.54000562223471;
+                    break;
+                case 'gameselector-cs2':
+                    distanceResult = (41560 / (gameSens * gameDpi)) / 2.54000562223471;
+                    break;
+                default:
+                    break;
+            }
+            break;
+    }
 
-    var cs2tohavocsens = (0.45 * cs2sens) * (cs2dpi / havocdpi);
-    document.getElementById('cs2result').innerHTML = 'Havoc sens - ' + Math.round(cs2tohavocsens * 100) / 100;
+    // setting values
+    document.getElementById('sensresult').innerHTML = 'Havoc Sens - ' + sensResult;
 
-    // 360 distance results - valorant
-    var val360centimeters = 13067 / (valorantsens * valorantdpi);
-    var val360inches = val360centimeters / 2.54000562223471;
-
-    document.getElementById('valorant360distanceinches').innerHTML = '360° Distance - ' + val360inches + 'in';
-    document.getElementById('valorant360distancecentimeters').innerHTML = '360° Distance - ' + val360centimeters + 'cm';
-
-
-    // 360 distance results - cs2
-    var cs2360centimeters = 41560 / (cs2sens * cs2dpi);
-    var cs2360inches = cs2360centimeters / 2.54000562223471;
-
-    document.getElementById('cs2360distanceinches').innerHTML = '360° Distance - ' + cs2360inches + 'in';
-    document.getElementById('cs2360distancecentimeters').innerHTML = '360° Distance - ' + cs2360centimeters + 'cm';
+    switch (document.getElementById('unitselector').value) {
+        case 'unitselector-inches':
+            document.getElementById('distantresult').innerHTML = '360° Distance - ' + distanceResult + 'in';
+            break;
+        case 'unitselector-centimeters':
+            document.getElementById('distantresult').innerHTML = '360° Distance - ' + distanceResult + 'cm';
+            break;
+        default:
+            document.getElementById('distantresult').innerHTML = '360° Distance - ' + distanceResult + 'in';
+            break;
+    }
 }
 
 function showGameSelectorContent(selectedValue) {
-    // Hide all content elements
-    document.getElementById('gameselector-valorant').style.display = 'none';
-    document.getElementById('gameselector-cs2').style.display = 'none';
-
-    // Show the selected content based on the dropdown value
-    document.getElementById(selectedValue).style.display = 'block';
-
-    localStorage.setItem('gameselector', selectedValue);
-}
-
-function showUnitSelectorContent(selectedValue) {
-    document.getElementById('valorant360distanceinches').style.display = 'none';
-    document.getElementById('valorant360distancecentimeters').style.display = 'none';
-    document.getElementById('cs2360distanceinches').style.display = 'none';
-    document.getElementById('cs2360distancecentimeters').style.display = 'none';
-
-    if (selectedValue == 'unitselector-inches') {
-        document.getElementById('valorant360distanceinches').style.display = 'block';
-        document.getElementById('cs2360distanceinches').style.display = 'block';
+    switch (selectedValue) {
+        case 'gameselector-valorant':
+            document.getElementById('game-title').innerHTML = 'Valorant';
+            break;
+        case 'gameselector-cs2':
+            document.getElementById('game-title').innerHTML = 'Counter Strike 2';
+            break;
+        default:
+            document.getElementById('game-title').innerHTML = 'Valorant';
+            break;
     }
 
-    if (selectedValue == 'unitselector-centimeters') {
-        document.getElementById('valorant360distancecentimeters').style.display = 'block';
-        document.getElementById('cs2360distancecentimeters').style.display = 'block';
-    }
-
-    localStorage.setItem('unitselector', selectedValue);
+    multiply();
 }
 
 function themeSelector(selectedValue) {
-    document.body.classList.remove('body-light');
-    document.body.classList.remove('body-dark');
-    document.body.classList.remove('body-lighter');
-    document.body.classList.remove('body-darker');
-    document.body.classList.remove('body-discord');
+    Themes.forEach((value, keys) => {
+        document.body.classList.remove(value);
+    });
 
-    switch (selectedValue) {
-        case 'themeselector-light':
-            document.body.classList.add('body-light');
-            break;
+    document.body.classList.add(Themes.get(selectedValue));
 
-        case 'themeselector-dark':
-            document.body.classList.add('body-dark');
-            break;
+    localStorage.setItem(ThemeSelectorKey, selectedValue);
+}
 
-        case 'themeselector-lighter':
-            document.body.classList.add('body-lighter');
-            break;
-
-        case 'themeselector-darker':
-            document.body.classList.add('body-darker');
-            break;
-
-        case 'themeselector-discord':
-            document.body.classList.add('body-discord');
-            break;
-
-        default:
-            document.body.classList.add('body-light');
-            break;
-    }
-
-    localStorage.setItem("themeselector", selectedValue);
+function showUnitSelectorContent(selectedValue) {
+    multiply();
+    localStorage.setItem(ThemeSelectorKey, selectedValue);
 }

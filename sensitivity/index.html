@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="../style.css">
     <script src="script.js"></script>
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-    <meta name="description" content="Simple online convertor for converting your sensitivity from games like Counter Strike 2 and Valorant to Havoc. Havoc is a tactical team-based, first-person shooter game made by 2 developers.">
+    <meta name="description"
+        content="Simple online convertor for converting your sensitivity from games like Counter Strike 2 and Valorant to Havoc. Havoc is a tactical team-based, first-person shooter game made by 2 developers.">
 
     <!-- open graph data -->
     <meta property="og:title" content="Havoc Sensitivity Convertor">
@@ -60,7 +61,7 @@
     <br>
 
     <label for="unitselector">Unit - </label>
-    <select id="unitselector" onchange="showUnitSelectorContent(this.value)">
+    <select id="unitselector" oninput="showUnitSelectorContent(this.value)">
         <option value="unitselector-inches">Inches</option>
         <option value="unitselector-centimeters">Centimeters</option>
     </select>
@@ -68,7 +69,7 @@
     <br>
 
     <label for="themeselector">Theme - </label>
-    <select id="themeselector" onchange="themeSelector(this.value)">
+    <select id="themeselector" oninput="themeSelector(this.value)">
         <option value="themeselector-light">Light</option>
         <option value="themeselector-dark">Dark</option>
         <option value="themeselector-lighter">Lighter</option>
@@ -78,41 +79,26 @@
 
     <!--  -->
 
-    <div id="gameselector-valorant">
-        <h1>Valorant</h1>
+    <h1 id="game-title">Valorant</h1>
 
-        <span>Sensitivity</span>
-        <input type="range" min="0.0" max="5.0" value="1.0" id="valorantsens" step="0.1">
-        <input type="number" id="valorantsensvalue" name="valorantsensvalue" min="0.0" max="5.0" value="1.0" step="0.1">
+    <span>Sensitivity</span>
+    <input type="range" min="0.0" max="5.0" value="1.0" id="gamesens" step="0.1"
+        oninput="document.getElementById('gamesensvalue').value = this.value; multiply();">
+    <input type="number" id="gamesensvalue" name="gamesensvalue" min="0.0" max="5.0" value="1.0" step="0.1"
+        oninput="document.getElementById('gamesens').value = this.value; multiply();">
 
-        <br>
+    <br>
 
-        <span>DPI</span>
-        <input type="range" min="0" max="2000" value="800" id="valorantdpi" step="0.1">
-        <input type="number" id="valorantdpivalue" name="valorantdpivalue" min="0" max="2000" value="800" step="0.1">
+    <span>DPI</span>
+    <input type="range" min="0" max="2000" value="800" id="gamedpi" step="0.1"
+        oninput="document.getElementById('gamedpivalue').value = this.value; multiply();">
+    <input type="number" id="gamedpivalue" name="gamedpivalue" min="0" max="2000" value="800" step="0.1"
+        oninput="document.getElementById('gamedpi').value = this.value; multiply();">
 
-        <div id="valorantresult">Havoc sens - 2.07</div>
-        <div id="valorant360distanceinches">360° Distance - 0</div>
-        <div id="valorant360distancecentimeters">360° Distance - 0</div>
-    </div>
+    <div id="sensresult">Havoc sens - 0</div>
+    <div id="distantresult">360° Distance - 0</div>
 
-    <div id="gameselector-cs2">
-        <h1>Counter Strike 2</h1>
 
-        <span>Sensitivity</span>
-        <input type="range" min="0.0" max="5.0" value="1.0" id="cs2sens" step="0.1">
-        <input type="number" id="cs2sensvalue" name="cs2sensvalue" min="0.0" max="5.0" value="1.0" step="0.1">
-
-        <br>
-
-        <span>DPI</span>
-        <input type="range" min="0" max="2000" value="800" id="cs2dpi" step="0.1">
-        <input type="number" id="cs2dpivalue" name="cs2dpivalue" min="0" max="2000" value="800" step="0.1">
-
-        <div id="cs2result">Havoc sens - 0.41</div>
-        <div id="cs2360distanceinches">360° Distance - 0</div>
-        <div id="cs2360distancecentimeters">360° Distance - 0</div>
-    </div>
 
     <br> <br>
 
