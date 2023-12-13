@@ -1,35 +1,40 @@
+const GameSelectorKey = 'havoctools-gameselector';
+const UnitSelectorKey = 'havoctools-unitselector';
+const ThemeSelectorKey = 'havoctools-themeselector';
+
+
 document.addEventListener('DOMContentLoaded', function () {
     multiply();
 
-    if (localStorage.getItem('gameselector') === null) {
+    if (localStorage.getItem(GameSelectorKey) === null) {
 
         showGameSelectorContent('gameselector-valorant');
         document.getElementById('gameselector').value = 'gameselector-valorant';
     }
     else {
-        showGameSelectorContent(localStorage.getItem('gameselector'));
-        document.getElementById('gameselector').value = localStorage.getItem('gameselector');
+        showGameSelectorContent(localStorage.getItem(GameSelectorKey));
+        document.getElementById('gameselector').value = localStorage.getItem(GameSelectorKey);
     }
 
 
-    if (localStorage.getItem('unitselector') === null) {
+    if (localStorage.getItem(UnitSelectorKey) === null) {
 
         showUnitSelectorContent('gameselector-valorant');
         document.getElementById('unitselector').value = 'unitselector-inches';
     }
     else {
-        showUnitSelectorContent(localStorage.getItem('unitselector'));
-        document.getElementById('unitselector').value = localStorage.getItem('unitselector');
+        showUnitSelectorContent(localStorage.getItem(UnitSelectorKey));
+        document.getElementById('unitselector').value = localStorage.getItem(UnitSelectorKey);
     }
 
-    if (localStorage.getItem('themeselector') === null) {
+    if (localStorage.getItem(ThemeSelectorKey) === null) {
 
         themeSelector('themeselector-light');
         document.getElementById('themeselector').value = 'themeselector-light';
     }
     else {
-        themeSelector(localStorage.getItem('themeselector'));
-        document.getElementById('themeselector').value = localStorage.getItem('themeselector');
+        themeSelector(localStorage.getItem(ThemeSelectorKey));
+        document.getElementById('themeselector').value = localStorage.getItem(ThemeSelectorKey);
     }
 
 
