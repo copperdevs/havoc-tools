@@ -1,16 +1,15 @@
 /* https://coolors.co/2e3138-f1f0ea-ef233c-3a86ff-8338ec */
 
 :root {
-    --TextColor: #2E3138;
-    --BackgroundColor: #F1F0EA;
+    --TextColor: #2e3138;
+    --BackgroundColor: #f1f0ea;
 
-    --Red: #EF233C;
-    --Blue: #3A86FF;
-    --Purple: #8338EC;
+    --Red: #ef233c;
+    --Blue: #3a86ff;
+    --Purple: #8338ec;
 
-    --Font: 'Montserrat', sans-serif;
+    --Font: "Montserrat", sans-serif;
 }
-
 
 .body-light {
     margin: 40px auto;
@@ -90,7 +89,6 @@ a:hover {
 a:active {
     text-decoration: underline;
 }
-
 
 .footer {
     flex-shrink: 0;
