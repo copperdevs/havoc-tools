@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://olympiangames.github.io/havoc-tools/sitemap-index.xml

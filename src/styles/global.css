@@ -1,0 +1,110 @@
+/* https://coolors.co/2e3138-f1f0ea-ef233c-3a86ff-8338ec */
+
+:root {
+    --TextColor: #2e3138;
+    --BackgroundColor: #f1f0ea;
+
+    --Red: #ef233c;
+    --Blue: #3a86ff;
+    --Purple: #8338ec;
+
+    --Yellow: #fbbf0e;
+    --Orange: #dd8d0c;
+
+    --Font: "Montserrat", sans-serif;
+    
+    --AccentGradient: linear-gradient(45deg, var(--Yellow), var(--Orange) 30%, white 60%);
+}
+
+.text-gradient {
+    background-image: var(--AccentGradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 400%;
+    background-position: 0%;
+}
+
+.body-light {
+    margin: 40px auto;
+    max-width: 650px;
+    line-height: 1.6;
+    font-size: 18px;
+    padding: 0 10px;
+    font-family: var(--Font);
+    background-color: var(--BackgroundColor);
+    color: var(--TextColor);
+}
+
+.body-dark {
+    margin: 40px auto;
+    max-width: 650px;
+    line-height: 1.6;
+    font-size: 18px;
+    padding: 0 10px;
+    font-family: var(--Font);
+    background-color: var(--TextColor);
+    color: var(--BackgroundColor);
+}
+
+.body-darker {
+    margin: 40px auto;
+    max-width: 650px;
+    line-height: 1.6;
+    font-size: 18px;
+    padding: 0 10px;
+    font-family: var(--Font);
+    background-color: black;
+    color: white;
+}
+
+.body-lighter {
+    margin: 40px auto;
+    max-width: 650px;
+    line-height: 1.6;
+    font-size: 18px;
+    padding: 0 10px;
+    font-family: var(--Font);
+    background-color: white;
+    color: black;
+}
+
+.body-discord {
+    margin: 40px auto;
+    max-width: 650px;
+    line-height: 1.6;
+    font-size: 18px;
+    padding: 0 10px;
+    font-family: var(--Font);
+    background-color: #313338;
+    color: #cadbe1;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+}
+
+a:link {
+    text-decoration: none;
+    color: var(--Blue);
+}
+
+a:visited {
+    text-decoration: none;
+    color: var(--Purple);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
+.footer {
+    flex-shrink: 0;
+    padding: 20px;
+}

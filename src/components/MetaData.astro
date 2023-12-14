@@ -1,0 +1,33 @@
+---
+interface Props {
+    title: string;
+    description: string;
+    url: string;
+    banner: string;
+}
+
+const { title, description, url, banner } = Astro.props;
+---
+
+<!-- normal data -->
+<meta name="description" content={description} />
+
+<!-- open graph data -->
+<meta property="og:title" content={title} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={url} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={banner} />
+<meta property="og:image:type" content="image/jpg" />
+<meta property="og:image:width" content="1500" />
+<meta property="og:image:height" content="500" />
+<meta
+    property="og:image:alt"
+    content="erhm there is suppose to be a picture here"
+/>
+
+<!-- twitter data -->
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={banner} />
+<meta name="twitter:card" content="summary_large_image" />
