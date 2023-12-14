@@ -10,6 +10,9 @@ const { title, description, url, banner } = Astro.props;
 import GoogleAnalytics from "../components/GoogleAnalytics.astro";
 import MetaData from "../components/MetaData.astro";
 import "../styles/global.css";
+import NavBar from "../components/NavBar.astro";
+import { ViewTransitions } from "astro:transitions";
+import ThemeLoader from "../components/ThemeLoader.astro";
 ---
 
 <!doctype html>
@@ -21,10 +24,17 @@ import "../styles/global.css";
 
         <title>{title}</title>
 
+        <ViewTransitions />
+
         <MetaData title={title} description={description} url={url} banner={banner} />
         <GoogleAnalytics />
     </head>
     <body class="body-dark">
+
+        <ThemeLoader />
+        
+        <NavBar />
+
         <slot />
     </body>
 </html>
