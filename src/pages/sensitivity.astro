@@ -1,0 +1,127 @@
+---
+import BasePage from "../layouts/BasePage.astro";
+import SensitivityCalculator from "../components/SensitivityCalculator.astro";
+import ThemeLoader from "../components/ThemeLoader.astro";
+---
+
+<BasePage
+    title="Havoc Sensitivity Calculator"
+    description="Simple online convertor for converting your sensitivity from games like Counter Strike 2 and Valorant to Havoc. Havoc is a tactical team-based, first-person shooter game made by 2 developers."
+    url="https://olympiangames.github.io/havoc-tools/sensitivity/"
+    banner="https://olympiangames.github.io/havoc-tools/images/banner.jpg"
+>
+    <SensitivityCalculator />
+    <ThemeLoader />
+    
+    <h1><span class="text-gradient">Havoc</span> Sensitivity Calculator</h1>
+
+    <h1>Settings</h1>
+
+    <span>Havoc DPI</span>
+    <input
+        type="range"
+        min="0.0"
+        max="2000.0"
+        value="800.0"
+        id="havocdpi"
+        step="0.1"
+        oninput="document.getElementById('havocdpivalue').value = this.value; multiply();"
+    />
+    <input
+        type="number"
+        id="havocdpivalue"
+        name="havocdpivalue"
+        min="0"
+        max="2000"
+        value="800"
+        step="0.1"
+        oninput="document.getElementById('havocdpi').value = this.value; multiply();"
+    />
+
+    <br />
+
+    <label for="gameselector">Game -</label>
+    <select id="gameselector" onchange="showGameSelectorContent(this.value);">
+        <option value="gameselector-valorant">Valorant</option>
+        <option value="gameselector-cs2">Counter Strike 2</option>
+    </select>
+
+    <br />
+
+    <label for="unitselector">Unit -</label>
+    <select id="unitselector" oninput="showUnitSelectorContent(this.value);">
+        <option value="unitselector-inches">Inches</option>
+        <option value="unitselector-centimeters">Centimeters</option>
+    </select>
+
+    <br />
+
+    <label for="themeselector">Theme -</label>
+    <select id="themeselector" oninput="themeSelector(this.value);">
+        <option value="themeselector-light">Light</option>
+        <option value="themeselector-dark">Dark</option>
+        <option value="themeselector-lighter">Lighter</option>
+        <option value="themeselector-darker">Darker</option>
+        <option value="themeselector-discord">Discord</option>
+    </select>
+
+    <!--  -->
+
+    <h1 id="game-title">Valorant</h1>
+
+    <span>Sensitivity</span>
+    <input
+        type="range"
+        min="0.0"
+        max="5.0"
+        value="1.0"
+        id="gamesens"
+        step="0.1"
+        oninput="document.getElementById('gamesensvalue').value = this.value; multiply();"
+    />
+    <input
+        type="number"
+        id="gamesensvalue"
+        name="gamesensvalue"
+        min="0.0"
+        max="5.0"
+        value="1.0"
+        step="0.1"
+        oninput="document.getElementById('gamesens').value = this.value; multiply();"
+    />
+
+    <br />
+
+    <span>DPI</span>
+    <input
+        type="range"
+        min="0"
+        max="2000"
+        value="800"
+        id="gamedpi"
+        step="0.1"
+        oninput="document.getElementById('gamedpivalue').value = this.value; multiply();"
+    />
+    <input
+        type="number"
+        id="gamedpivalue"
+        name="gamedpivalue"
+        min="0"
+        max="2000"
+        value="800"
+        step="0.1"
+        oninput="document.getElementById('gamedpi').value = this.value; multiply();"
+    />
+
+    <div id="sensresult">Havoc sens - 0</div>
+    <div id="distantresult">360° Distance - 0</div>
+
+    <br />
+    <br />
+
+    <h3>
+        <a href="https://docs.google.com/spreadsheets/d/1atLfKpDrmEQ8inAo_9VcVr0K1-4zNSNC/edit?usp=sharing&rtpof=true&sd=true">
+            Based off of this spreadsheet by voikmer</a
+        >
+    </h3>
+</BasePage>

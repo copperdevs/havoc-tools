@@ -1,0 +1,42 @@
+<script is:inline>
+    const ThemeSelectorKey = "havoctools-themeselector";
+
+    const Themes = new Map();
+    Themes.set("themeselector-light", "body-light");
+    Themes.set("themeselector-dark", "body-dark");
+    Themes.set("themeselector-lighter", "body-lighter");
+    Themes.set("themeselector-darker", "body-darker");
+    Themes.set("themeselector-discord", "body-discord");
+
+    function selectorLocalStorageHandler(storageKey, selectorId, defaultSelected) {
+        var localStorageData = localStorage.getItem(storageKey);
+        var targetValue = null;
+
+        if (localStorageData === null || localStorageData === undefined) {
+            targetValue = defaultSelected;
+        } else {
+            targetValue = localStorageData;
+        }
+
+        document.getElementById(selectorId).value = targetValue;
+        localStorage.setItem(storageKey, targetValue);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        selectorLocalStorageHandler(ThemeSelectorKey, "themeselector", "themeselector-dark");
+
+        themeSelector(localStorage.getItem(ThemeSelectorKey));
+
+        multiply();
+    });
+
+    function themeSelector(selectedValue) {
+        Themes.forEach((value, keys) => {
+            document.body.classList.remove(value);
+        });
+
+        document.body.classList.add(Themes.get(selectedValue));
+
+        localStorage.setItem(ThemeSelectorKey, selectedValue);
+    }
+</script>
