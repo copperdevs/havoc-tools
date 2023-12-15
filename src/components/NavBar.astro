@@ -1,0 +1,28 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+---
+
+<header>
+    <nav>
+        <div class="internal-links">
+            <HeaderLink href="/">Home</HeaderLink>
+            <HeaderLink href="/sensitivity">Sensitivity Calculator</HeaderLink>
+            <HeaderLink href="/about">About</HeaderLink>
+            <HeaderLink href="https://github.com/OlympianGames/havoc-tools/tree/main">Source</HeaderLink>
+
+            <label for="themeselector">Theme</label>
+            <select id="themeselector" oninput="themeSelector(this.value);">
+                <option value="themeselector-light">Light</option>
+                <option value="themeselector-dark">Dark</option>
+                <option value="themeselector-lighter">Lighter</option>
+                <option value="themeselector-darker">Darker</option>
+                <option value="themeselector-discord">Discord</option>
+            </select>
+        </div>
+    </nav>
+</header>
+
+<style>
+    nav {
+    }
+</style>
