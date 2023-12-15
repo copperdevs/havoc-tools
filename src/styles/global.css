@@ -1,5 +1,7 @@
 /* https://coolors.co/2e3138-f1f0ea-ef233c-3a86ff-8338ec */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 :root {
     --TextColor: #2e3138;
     --BackgroundColor: #f1f0ea;
@@ -11,7 +13,9 @@
     --Yellow: #fbbf0e;
     --Orange: #dd8d0c;
 
-    --Font: "Montserrat", sans-serif;
+    /* --Font: "Montserrat", sans-serif; */
+    --Font: "Inter", sans-serif;
+    
 
     --AccentGradientOrange: linear-gradient(45deg, var(--Yellow), var(--Orange) 30%, white 60%);
     --AccentGradientBlue: linear-gradient(45deg, var(--Blue), var(--Purple) 30%, white 60%);
