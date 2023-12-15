@@ -2,7 +2,7 @@
 
 > Many online tools for [Havoc](https://store.steampowered.com/app/2149290/Havoc/).
 
-# Currently Tools
+# Current Tools
 
 -   [x] [Sensitivity Converter](https://olympiangames.github.io/havoc-tools/sensitivity/)
 -   [ ] Skin Database
