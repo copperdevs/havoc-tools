@@ -12,12 +12,26 @@
     --Orange: #dd8d0c;
 
     --Font: "Montserrat", sans-serif;
-    
-    --AccentGradient: linear-gradient(45deg, var(--Yellow), var(--Orange) 30%, white 60%);
+
+    --AccentGradientOrange: linear-gradient(45deg, var(--Yellow), var(--Orange) 30%, white 60%);
+    --AccentGradientBlue: linear-gradient(45deg, var(--Blue), var(--Purple) 30%, white 60%);
 }
 
-.text-gradient {
-    background-image: var(--AccentGradient);
+.text-gradient-orange {
+    background-image: var(--AccentGradientOrange);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 400%;
+    background-position: 0%;
+}
+
+.ignore-css {
+    all: unset;
+}
+
+.text-gradient-blue {
+    background-image: var(--AccentGradientBlue);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
