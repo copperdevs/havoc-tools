@@ -7,8 +7,6 @@
 -   [x] [Sensitivity Converter](https://olympiangames.github.io/havoc-tools/sensitivity/)
 -   [ ] Skin Database
 
----
-
 <br /> <br />
 
 # Tools
@@ -25,11 +23,7 @@
 -   [ ] [Rainbow Six Siege](https://www.ubisoft.com/en-us/game/rainbow-six/siege)
 -   [ ] [Apex Legends](https://www.ea.com/games/apex-legends)
 
-<br />
-
----
-
-<br /> <br />
+<br /> <br /> <br />
 
 # Commands
 
