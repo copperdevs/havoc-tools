@@ -30,6 +30,10 @@
         multiply();
     });
 
+    document.addEventListener("astro:after-swap", function () {
+        multiply();
+    });
+
     function multiply() {
         // havoc
         var havocdpi = document.getElementById("havocdpi").value;
