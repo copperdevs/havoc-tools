@@ -26,8 +26,13 @@
         selectorLocalStorageHandler(ThemeSelectorKey, "themeselector", "themeselector-dark");
 
         themeSelector(localStorage.getItem(ThemeSelectorKey));
+    });
 
-        multiply();
+    document.addEventListener("astro:after-swap", function () {
+        // return window.scrollTo({ left: 0, top: 0, behavior: "instant" });
+        selectorLocalStorageHandler(ThemeSelectorKey, "themeselector", "themeselector-dark");
+
+        themeSelector(localStorage.getItem(ThemeSelectorKey));
     });
 
     function themeSelector(selectedValue) {
