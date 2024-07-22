@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+}
+
+const { title, description, path } = Astro.props;
+---
+
+<div class="project-item">
+  <h3 class="project-item-header">
+    <a href={path}>
+      <span class="text-gradient">{title}</span>
+    </a>
+  </h3>
+
+  <h5 class="project-item-paragraph">
+    <span>{description}</span>
+  </h5>
+</div>
