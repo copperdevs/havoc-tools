@@ -1,5 +1,5 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
 import { getCollection } from "astro:content";
 import NavBar from "../../components/NavBar.astro";
@@ -9,7 +9,7 @@ const posts = await getCollection("articles");
 const visiblePosts = posts.filter((post) => !post.data.hidden);
 ---
 
-<Layout title="articles">
+<BaseLayout title="articles">
   <NavBar active="articles" />
 
   <section>
@@ -20,10 +20,11 @@ const visiblePosts = posts.filter((post) => !post.data.hidden);
             title={post.data.title}
             description={post.data.description}
             path={`/articles/${post.slug}/`}
+            releaseDate={post.data.releaseDate}
           />
           {index < visiblePosts.length - 1 && <hr />}
         </>
       ))
     }
   </section>
-</Layout>
+</BaseLayout>

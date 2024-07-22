@@ -1,6 +1,6 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import NavBar from "../../components/NavBar.astro";
 
 export async function getStaticPaths() {
@@ -16,9 +16,9 @@ const post = Astro.props;
 const { Content } = await post.render();
 ---
 
-<Layout title={post.data.title}>
+<BaseLayout title={post.data.title}>
   <NavBar active="none">
     <h2 style="display: inline-block">{post.data.title}</h2>
   </NavBar>
   <Content />
-</Layout>
+</BaseLayout>
