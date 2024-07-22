@@ -21,6 +21,7 @@ const visiblePosts = posts.filter((post) => !post.data.hidden);
             description={post.data.description}
             path={`/articles/${post.slug}/`}
             releaseDate={post.data.releaseDate}
+            author={post.data.creator}
           />
           {index < visiblePosts.length - 1 && <hr />}
         </>

@@ -20,7 +20,6 @@ const visiblePosts = posts.filter((post) => !post.data.hidden);
             title={post.data.title}
             description={post.data.description}
             path={`/tools/${post.slug}/`}
-            releaseDate={null}
           />
           {index < visiblePosts.length - 1 && <hr />}
         </>

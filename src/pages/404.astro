@@ -1,0 +1,16 @@
+---
+import NavBar from "../components/NavBar.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="404">
+  <NavBar active="404" />
+
+  <div>
+    <h2><span class="text-gradient">404</span></h2>
+  </div>
+
+  <script is:inline>
+    window.location.href = "/";
+  </script>
+</BaseLayout>

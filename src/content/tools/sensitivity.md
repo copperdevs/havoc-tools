@@ -1,6 +1,6 @@
 ---
-title: "sensitivity"
-description: "tool :3"
+title: "sensitivity calculator"
+description: "Calculator for converting other games sensitivity to havoc"
 creator: "me"
 hidden: false
 ---

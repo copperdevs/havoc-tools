@@ -1,14 +1,16 @@
 ---
+import FormattedAuthor from "./FormattedAuthor.astro";
 import FormattedDate from "./FormattedDate.astro";
 
 interface Props {
   title: string;
   description: string;
   path: string;
-  releaseDate: Date;
+  releaseDate?: Date;
+  author?: string;
 }
 
-const { title, description, path, releaseDate } = Astro.props;
+const { title, description, path, releaseDate, author } = Astro.props;
 ---
 
 <div class="project-item">
@@ -17,7 +19,13 @@ const { title, description, path, releaseDate } = Astro.props;
       <span class="text-gradient">{title}</span>
     </a>
 
-    <div class="project-item-header-date"><FormattedDate date={releaseDate} /></div>
+    <div class="project-item-header-author">
+      <FormattedAuthor author={author} />
+    </div>
+
+    <div class="project-item-header-date">
+      <FormattedDate date={releaseDate} />
+    </div>
   </h3>
 
   <h5 class="project-item-paragraph">
