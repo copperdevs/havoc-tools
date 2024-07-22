@@ -1,0 +1,3 @@
+[submodule "common-astro"]
+	path = common-astro
+	url = https://github.com/copperdevs/common-astro

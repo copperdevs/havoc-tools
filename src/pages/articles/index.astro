@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+import { getCollection } from "astro:content";
+import NavBar from "../../components/NavBar.astro";
+import ProjectItem from "../../components/ProjectItem.astro";
+
+const posts = await getCollection("articles");
+const visiblePosts = posts.filter((post) => !post.data.hidden);
+---
+
+<BaseLayout title="articles">
+  <NavBar active="articles" />
+
+  <section>
+    {
+      visiblePosts.map((post, index) => (
+        <>
+          <ProjectItem
+            title={post.data.title}
+            description={post.data.description}
+            path={`/articles/${post.slug}/`}
+            releaseDate={post.data.releaseDate}
+            author={post.data.creator}
+          />
+          {index < visiblePosts.length - 1 && <hr />}
+        </>
+      ))
+    }
+  </section>
+</BaseLayout>

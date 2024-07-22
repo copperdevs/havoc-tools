@@ -1,0 +1,13 @@
+---
+interface Props {
+  author: string;
+}
+
+const { author } = Astro.props;
+---
+
+{
+  author != null && (
+    <p>- {author}</p>
+  )
+}

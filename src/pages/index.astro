@@ -1,12 +1,13 @@
 ---
-import PageMeta from "../components/PageMeta.astro";
-import PageLayout from "../layouts/PageLayout.astro";
-import { SITE_TITLE } from "../config";
+import NavBar from "../components/NavBar.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<PageLayout>
-  <PageMeta title={`${SITE_TITLE}`} slot="meta" />
-  <Fragment slot="main">
+<BaseLayout title="home">
+  <NavBar active="home" />
 
-  </Fragment>
-</PageLayout>
+  <div>
+    <p><span class="text-gradient">havoc</span> tools</p>
+    <p>theres like tools and stuff</p>
+  </div>
+</BaseLayout>

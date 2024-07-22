@@ -1,12 +1,16 @@
 ---
-import PageMeta from "../components/PageMeta.astro";
-import PageLayout from "../layouts/PageLayout.astro";
-import { SITE_TITLE } from "../config";
+import NavBar from "../components/NavBar.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<PageLayout>
-  <PageMeta title={`${SITE_TITLE}`} slot="meta" />
-  <Fragment slot="main">
+<BaseLayout title="404">
+  <NavBar active="404" />
 
-  </Fragment>
-</PageLayout>
+  <div>
+    <h2><span class="text-gradient">404</span></h2>
+  </div>
+
+  <script is:inline>
+    window.location.href = "/";
+  </script>
+</BaseLayout>

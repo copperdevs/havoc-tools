@@ -1,0 +1,26 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Layout from "../../layouts/BaseLayout.astro";
+import NavBar from "../../components/NavBar.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("articles");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<"articles">;
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={post.data.title}>
+  <NavBar active="none">
+    <h2 transition:name="toolheader" style="display: inline-block">
+      <span class="text-gradient">{post.data.title}</span>
+    </h2>
+  </NavBar>
+  <Content />
+</Layout>
