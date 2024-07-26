@@ -1,5 +1,5 @@
 ---
-import Divider from "../../common-astro/components/Divider.astro";
+import FontAwesomeIcon from "../../common-astro/components/FontAwesomeIcon.astro";
 import NavBarHeaderLink from "./NavBarHeaderLink.astro";
 
 interface Props {
@@ -15,5 +15,11 @@ const { active } = Astro.props;
     <NavBarHeaderLink name="home" href="/" active={active} />
     <NavBarHeaderLink name="articles" href="/articles" active={active} />
     <NavBarHeaderLink name="tools" href="/tools" active={active} />
+  </div>
+
+  <div class="navbar-socials">
+    <h2>
+      <FontAwesomeIcon iconName="fa-brands fa-github" targetUrl="https://github.com/copperdevs/havoc-tools"/>
+    </h2>
   </div>
 </div>
