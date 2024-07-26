@@ -1,5 +1,6 @@
 ---
 import NavBar from "../components/NavBar.astro";
+import RecentArticles from "../components/RecentArticles.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
@@ -7,7 +8,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <NavBar active="home" />
 
   <div>
-    <p><span class="text-gradient">havoc</span> tools</p>
-    <p>theres like tools and stuff</p>
+    <h2>Welcome to <span class="text-gradient">Havoc</span> Tools ⚒️</h2>
+  </div>
+
+  <hr />
+
+  <div>
+    <h3>Recent Articles - <a href="/projects">View All</a></h3>
+    <RecentArticles astro:before-preparation />
   </div>
 </BaseLayout>

@@ -1,6 +1,6 @@
 ---
+import FormattedDate from "../../common-astro/components/FormattedDate.astro";
 import FormattedAuthor from "./FormattedAuthor.astro";
-import FormattedDate from "./FormattedDate.astro";
 
 interface Props {
   title: string;
@@ -13,7 +13,7 @@ interface Props {
 const { title, description, path, releaseDate, author } = Astro.props;
 ---
 
-<div class="project-item">
+<div class="color-gray-light">
   <h3 class="project-item-header">
     <a href={path}>
       <span class="text-gradient">{title}</span>

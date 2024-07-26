@@ -1,9 +1,9 @@
 ---
-title: "Testing"
-description: "testing articles :3"
+title: "Testing Two"
+description: "testing article but the second version!"
 creator: "copperdevs"
-hidden: false
-releaseDate: 2024-07-22
+hidden: true
+releaseDate: 2024-09-22
 ---
 
 article!

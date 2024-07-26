@@ -1,5 +1,5 @@
 ---
-title: "movement guide"
+title: "Movement Guide"
 description: "guide to movement in havoc!"
 creator: "cakeu"
 hidden: false

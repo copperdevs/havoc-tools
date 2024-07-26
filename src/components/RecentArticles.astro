@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+import ProjectItem from "./ProjectItem.astro";
+
+const projects = await getCollection("articles");
+const visibleProjects = projects.filter((project) => !project.data.hidden);
+
+const recentArticles = visibleProjects.slice(0, 3);
+---
+
+<section>
+  {
+    recentArticles.map((article, index) => (
+      <>
+        <ProjectItem
+          title={article.data.title}
+          description={article.data.description}
+          path={`/articles/${article.slug}/`}
+          releaseDate={article.data.releaseDate}
+          author={article.data.creator}
+        />
+        {index < recentArticles.length - 1 && <hr />}
+      </>
+    ))
+  }
+</section>
