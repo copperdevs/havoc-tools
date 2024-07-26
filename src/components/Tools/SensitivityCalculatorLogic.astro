@@ -6,225 +6,130 @@
   const GameSelectorKey = "havoctools-gameselector";
   const UnitSelectorKey = "havoctools-unitselector";
 
-  function selectorLocalStorageHandler(
-    storageKey,
-    selectorId,
-    defaultSelected
-  ) {
-    var localStorageData = localStorage.getItem(storageKey);
-    var targetValue = null;
+  document.addEventListener("DOMContentLoaded", () => {
+    initializeSelectors();
+    updateContent();
+  });
 
-    if (localStorageData === null || localStorageData === undefined) {
-      targetValue = defaultSelected;
-    } else {
-      targetValue = localStorageData;
-    }
+  document.addEventListener("astro:after-swap", multiply);
 
-    document.getElementById(selectorId).value = targetValue;
-    localStorage.setItem(storageKey, targetValue);
+  function initializeSelectors() {
+    setSelectorValue(GameSelectorKey, "gameselector", "gameselector-valorant");
+    setSelectorValue(UnitSelectorKey, "unitselector", "unitselector-inches");
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    selectorLocalStorageHandler(
-      GameSelectorKey,
-      "gameselector",
-      "gameselector-valorant"
-    );
-    selectorLocalStorageHandler(
-      UnitSelectorKey,
-      "unitselector",
-      "unitselector-inches"
-    );
+  function setSelectorValue(storageKey, selectorId, defaultValue) {
+    const storedValue = localStorage.getItem(storageKey) || defaultValue;
+    document.getElementById(selectorId).value = storedValue;
+    localStorage.setItem(storageKey, storedValue);
+  }
 
-    showGameSelectorContent(localStorage.getItem(GameSelectorKey));
-    showUnitSelectorContent(localStorage.getItem(UnitSelectorKey));
+  function updateContent() {
+    const gameValue = localStorage.getItem(GameSelectorKey);
+    const unitValue = localStorage.getItem(UnitSelectorKey);
 
+    showGameSelectorContent(gameValue);
+    showUnitSelectorContent(unitValue);
     multiply();
-  });
-
-  document.addEventListener("astro:after-swap", function () {
-    multiply();
-  });
+  }
 
   function multiply() {
-    // havoc
-    var havocdpi = document.getElementById("havocdpi").value;
+    const havocDpi = parseFloat(document.getElementById("havocdpi").value);
+    const gameDpi = parseFloat(document.getElementById("gamedpi").value);
+    const gameSens = parseFloat(document.getElementById("gamesens").value);
 
-    var gameDpi = document.getElementById("gamedpi").value;
-    var gameSens = document.getElementById("gamesens").value;
+    const gameCalculator = getGameCalculator();
+    const unitCalculator = getUnitCalculator();
 
-    var sensResult = 0;
-    var distanceResult = 0;
+    const sensResult = gameCalculator(havocDpi, gameDpi, gameSens);
+    const distanceResult = unitCalculator(havocDpi, gameDpi, gameSens);
 
-    // sens math
-    switch (document.getElementById("gameselector").value) {
-      case "gameselector-valorant":
-        sensResult = ValorantSensitivityCalculator(havocdpi, gameDpi, gameSens);
-        break;
-      case "gameselector-cs2":
-        sensResult = CounterStrike2SensitivityCalculator(
-          havocdpi,
-          gameDpi,
-          gameSens
-        );
-        break;
-      default:
-        sensResult = ValorantSensitivityCalculator(havocdpi, gameDpi, gameSens);
-        break;
-    }
-
-    // distance math
-    switch (document.getElementById("unitselector").value) {
-      case "unitselector-inches":
-        switch (document.getElementById("gameselector").value) {
-          case "gameselector-valorant":
-            distanceResult = ValorantInchesDistanceCalculator(
-              havocdpi,
-              gameDpi,
-              gameSens
-            );
-            break;
-          case "gameselector-cs2":
-            distanceResult = CounterStrike2InchesDistanceCalculator(
-              havocdpi,
-              gameDpi,
-              gameSens
-            );
-            break;
-          default:
-            distanceResult = ValorantInchesDistanceCalculator(
-              havocdpi,
-              gameDpi,
-              gameSens
-            );
-            break;
-        }
-        break;
-      case "unitselector-centimeters":
-        switch (document.getElementById("gameselector").value) {
-          case "gameselector-valorant":
-            distanceResult = ValorantCentimetersDistanceCalculator(
-              havocdpi,
-              gameDpi,
-              gameSens
-            );
-            break;
-          case "gameselector-cs2":
-            distanceResult = CounterStrike2CentimetersDistanceCalculator(
-              havocdpi,
-              gameDpi,
-              gameSens
-            );
-            break;
-          default:
-            distanceResult = ValorantCentimetersDistanceCalculator(
-              havocdpi,
-              gameDpi,
-              gameSens
-            );
-            break;
-        }
-        break;
-      default:
-        switch (document.getElementById("gameselector").value) {
-          case "gameselector-valorant":
-            distanceResult = ValorantInchesDistanceCalculator(
-              havocdpi,
-              gameDpi,
-              gameSens
-            );
-            break;
-          case "gameselector-cs2":
-            distanceResult = CounterStrike2InchesDistanceCalculator(
-              havocdpi,
-              gameDpi,
-              gameSens
-            );
-            break;
-          default:
-            distanceResult = ValorantInchesDistanceCalculator(
-              havocdpi,
-              gameDpi,
-              gameSens
-            );
-            break;
-        }
-        break;
-    }
-
-    // setting values
     document.getElementById("sensresult").innerHTML =
-      "Havoc Sens - " + Math.round(sensResult * 1000) / 1000;
+      `Havoc Sens - ${sensResult.toFixed(3)}`;
+    document.getElementById("distantresult").innerHTML =
+      `360° Distance - ${distanceResult.toFixed(3)}${getUnitLabel()}`;
+  }
 
-    switch (document.getElementById("unitselector").value) {
-      case "unitselector-inches":
-        document.getElementById("distantresult").innerHTML =
-          "360° Distance - " + Math.round(distanceResult * 1000) / 1000 + "in";
-        break;
-      case "unitselector-centimeters":
-        document.getElementById("distantresult").innerHTML =
-          "360° Distance - " + Math.round(distanceResult * 1000) / 1000 + "cm";
-        break;
+  function getGameCalculator() {
+    const game = document.getElementById("gameselector").value;
+    switch (game) {
+      case "gameselector-cs2":
+        return CounterStrike2SensitivityCalculator;
       default:
-        document.getElementById("distantresult").innerHTML =
-          "360° Distance - " + Math.round(distanceResult * 1000) / 1000 + "in";
-        break;
+        return ValorantSensitivityCalculator;
     }
+  }
+
+  function getUnitCalculator() {
+    const unit = document.getElementById("unitselector").value;
+    const game = document.getElementById("gameselector").value;
+
+    if (unit === "unitselector-centimeters") {
+      return game === "gameselector-cs2"
+        ? CounterStrike2CentimetersDistanceCalculator
+        : ValorantCentimetersDistanceCalculator;
+    } else {
+      return game === "gameselector-cs2"
+        ? CounterStrike2InchesDistanceCalculator
+        : ValorantInchesDistanceCalculator;
+    }
+  }
+
+  function getUnitLabel() {
+    return document.getElementById("unitselector").value ===
+      "unitselector-centimeters"
+      ? "cm"
+      : "in";
   }
 
   function showGameSelectorContent(selectedValue) {
-    switch (selectedValue) {
-      case "gameselector-valorant":
-        document.getElementById("game-title").innerHTML = "Valorant";
-        break;
-      case "gameselector-cs2":
-        document.getElementById("game-title").innerHTML = "Counter Strike 2";
-        break;
-      default:
-        document.getElementById("game-title").innerHTML = "Valorant";
-        break;
-    }
-
+    document.getElementById("game-title").innerHTML =
+      selectedValue === "gameselector-cs2" ? "Counter Strike 2" : "Valorant";
     localStorage.setItem(GameSelectorKey, selectedValue);
-
     multiply();
   }
 
   function showUnitSelectorContent(selectedValue) {
-    multiply();
     localStorage.setItem(UnitSelectorKey, selectedValue);
+    multiply();
   }
 
-  function ValorantSensitivityCalculator(havocdpi, gameDpi, gameSens) {
-    return gameSens * 1.44 * (gameDpi / havocdpi);
+  function updateRangeAndMultiply(rangeId, valueId) {
+    document.getElementById(valueId).value =
+      document.getElementById(rangeId).value;
+    multiply();
   }
 
-  function CounterStrike2SensitivityCalculator(havocdpi, gameDpi, gameSens) {
-    return 0.45 * gameSens * (gameDpi / havocdpi);
+  function ValorantSensitivityCalculator(havocDpi, gameDpi, gameSens) {
+    return gameSens * 1.44 * (gameDpi / havocDpi);
   }
 
-  function ValorantInchesDistanceCalculator(havocdpi, gameDpi, gameSens) {
+  function CounterStrike2SensitivityCalculator(havocDpi, gameDpi, gameSens) {
+    return 0.45 * gameSens * (gameDpi / havocDpi);
+  }
+
+  function ValorantInchesDistanceCalculator(havocDpi, gameDpi, gameSens) {
     return 13067 / (gameSens * gameDpi) / 2.54000562223471;
   }
 
-  function CounterStrike2InchesDistanceCalculator(havocdpi, gameDpi, gameSens) {
+  function CounterStrike2InchesDistanceCalculator(havocDpi, gameDpi, gameSens) {
     return 41560 / (gameSens * gameDpi) / 2.54000562223471;
   }
 
-  function ValorantCentimetersDistanceCalculator(havocdpi, gameDpi, gameSens) {
+  function ValorantCentimetersDistanceCalculator(havocDpi, gameDpi, gameSens) {
     return (
-      ValorantInchesDistanceCalculator(havocdpi, gameDpi, gameSens) /
+      ValorantInchesDistanceCalculator(havocDpi, gameDpi, gameSens) /
       2.54000562223471
     );
   }
 
   function CounterStrike2CentimetersDistanceCalculator(
-    havocdpi,
+    havocDpi,
     gameDpi,
     gameSens
   ) {
     return (
-      CounterStrike2InchesDistanceCalculator(havocdpi, gameDpi, gameSens) /
+      CounterStrike2InchesDistanceCalculator(havocDpi, gameDpi, gameSens) /
       2.54000562223471
     );
   }
