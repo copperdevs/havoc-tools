@@ -7,12 +7,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <BaseLayout title="home">
   <NavBar active="home" />
 
+  <style>
+    .index-emoji {
+    }
+  </style>
+
   <div class="index-callout">
     <h2 class="index-callout-main">
       Welcome to <span class="text-gradient"
         ><a href="https://store.steampowered.com/app/2149290/Havoc/">Havoc</a
         ></span
-      > Tools ⚒️
+      > Tools <span class="show-on-desktop">⚒️</span>
     </h2>
     <h4 class="index-callout-sub">
       Tools for the indie fps game '<a

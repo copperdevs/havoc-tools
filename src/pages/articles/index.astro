@@ -12,7 +12,7 @@ const visiblePosts = posts.filter((post) => !post.data.hidden);
 <BaseLayout title="articles">
   <NavBar active="articles" />
 
-  <section>
+  <section  class="mobile-spacing">
     {
       visiblePosts.map((post, index) => (
         <>

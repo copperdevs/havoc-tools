@@ -1,25 +1,66 @@
 ---
-import FontAwesomeIcon from "../../common-astro/components/FontAwesomeIcon.astro";
+import Divider from "../../common-astro/components/Divider.astro";
 import NavBarHeaderLink from "./NavBarHeaderLink.astro";
+import FontAwesomeIcon from "../../common-astro/components/FontAwesomeIcon.astro";
 
 interface Props {
   active: string;
 }
-
-const { active } = Astro.props;
 ---
 
-<div class="navbar">
+<div class="navbar show-on-desktop hide-on-mobile">
   <div class="navbar-links">
     <slot />
-    <NavBarHeaderLink name="home" href="/" active={active} />
-    <NavBarHeaderLink name="articles" href="/articles" active={active} />
-    <NavBarHeaderLink name="tools" href="/tools" active={active} />
+    <span style="display: inline-block">
+      <NavBarHeaderLink name="home" href="/" />
+    </span>
+    <span style="display: inline-block">
+      <NavBarHeaderLink name="articles" href="/articles" />
+    </span>
+    <span style="display: inline-block">
+      <NavBarHeaderLink name="tools" href="/tools" />
+    </span>
   </div>
 
   <div class="navbar-socials">
     <h2>
-      <FontAwesomeIcon iconName="fa-brands fa-github" targetUrl="https://github.com/copperdevs/havoc-tools"/>
+      <FontAwesomeIcon
+        iconName="fa-brands fa-github"
+        targetUrl="https://github.com/copperdevs/havoc-tools"
+      />
     </h2>
+  </div>
+</div>
+
+<div class="navbar show-on-mobile hide-on-desktop top-right">
+  <span onclick="openNav()">
+    <FontAwesomeIcon iconName="fa-solid fa-bars" />
+  </span>
+
+  <div id="myNav" class="overlay">
+    <span class="closebtn top-right" onclick="closeNav()">
+      <FontAwesomeIcon iconName="fa-solid fa-x" />
+    </span>
+
+    <div class="overlay-content">
+      <NavBarHeaderLink name="home" href="/" />
+      <NavBarHeaderLink name="articles" href="/articles" />
+      <NavBarHeaderLink name="tools" href="/tools" />
+      <Divider />
+      <NavBarHeaderLink
+        name="Source"
+        href="https://github.com/copperdevs/havoc-tools"
+      />
+    </div>
+
+    <script is:inline>
+      function openNav() {
+        document.getElementById("myNav").style.width = "100%";
+      }
+
+      function closeNav() {
+        document.getElementById("myNav").style.width = "0%";
+      }
+    </script>
   </div>
 </div>

@@ -1,6 +1,6 @@
 ---
 title: "Testing"
-description: "testing articles :3"
+description: "Testing articles :3"
 creator: "copperdevs"
 hidden: false
 releaseDate: 2024-07-22

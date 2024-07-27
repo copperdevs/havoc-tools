@@ -19,16 +19,32 @@ const { title, description, path, releaseDate, author } = Astro.props;
       <span class="text-gradient">{title}</span>
     </a>
 
-    <div class="project-item-header-author">
-      <FormattedAuthor author={author} />
+    <div class="project-item-header-author show-on-desktop">
+      {
+        author && (
+          <span>
+            - <FormattedAuthor author={author} />
+          </span>
+        )
+      }
     </div>
 
-    <div class="project-item-header-date">
+    <div class="project-item-header-date show-on-desktop">
       <FormattedDate date={releaseDate} />
     </div>
   </h3>
 
   <h5 class="project-item-paragraph">
+    {
+      author && releaseDate && (
+        <span class="hide-on-desktop">
+          Written by <FormattedAuthor author={author} /> on{" "}
+          <FormattedDate date={releaseDate} />.
+          <br />
+        </span>
+      )
+    }
+
     <span>{description}</span>
   </h5>
 </div>

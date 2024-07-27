@@ -2,15 +2,11 @@
 interface Props {
   name: string;
   href: string;
-  active: string;
 }
 
-const { name, href, active } = Astro.props;
-
-const isActive = active === name;
-const Tag = isActive ? "h2" : "h3";
+const { name, href } = Astro.props;
 ---
 
-<Tag transition:name={`${name}header`} style="display: inline-block">
+<h3>
   <a href={href}>{name.charAt(0).toUpperCase() + name.slice(1)}</a>
-</Tag>
+</h3>
