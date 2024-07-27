@@ -8,6 +8,7 @@ const { title } = Astro.props;
 import { ViewTransitions } from "astro:transitions";
 import "../../common-astro/style/style.css";
 import FontAwesome from "../../common-astro/components/FontAwesome.astro";
+import LinkRedirect from "../../common-astro/components/LinkRedirect.astro";
 ---
 
 <!doctype html>
@@ -23,6 +24,10 @@ import FontAwesome from "../../common-astro/components/FontAwesome.astro";
   </head>
   <body>
     <main>
+      <LinkRedirect
+        badUrls={["havoc-tools.pages.dev"]}
+        targetUrl="havoc-tools.copperdevs.com"
+      />
       <slot />
     </main>
   </body>
