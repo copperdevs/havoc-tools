@@ -1,16 +1,24 @@
 ---
+import RandomText from "../../common-astro/components/RandomText.astro";
 import NavBar from "../components/NavBar.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="404">
+<BaseLayout title="home">
   <NavBar active="404" />
 
-  <div>
-    <h2><span class="text-gradient">404</span></h2>
+  <div class="index-callout">
+    <h2 class="index-callout-main">
+      Woopsies! <span class="text-gradient">404</span>
+    </h2>
+    <h4 class="index-callout-sub">
+      <RandomText
+        options={[
+          "Hmm.. the page you're looking for couldn't be found",
+          "Woopsies :p dropped the page you were looking for",
+          "yo what page are you looking for? cause i cant find it :p",
+        ]}
+      />
+    </h4>
   </div>
-
-  <script is:inline>
-    window.location.href = "/";
-  </script>
 </BaseLayout>
