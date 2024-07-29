@@ -10,11 +10,9 @@ import BaseLayout from "./BaseLayout.astro";
 ---
 
 <BaseLayout title={title}>
-  <NavBar active="none">
-    <h2 transition:name="toolheader" style="display: inline-block">
-      <span class="text-gradient mobile-spacing">{title}</span>
-    </h2>
-  </NavBar>
+  <NavBar active="none" />
+
+  <h2 class="index-callout-main hide-on-desktop text-gradient">{title}</h2>
 
   <slot />
 </BaseLayout>
