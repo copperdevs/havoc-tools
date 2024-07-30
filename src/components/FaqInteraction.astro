@@ -1,6 +1,5 @@
-<script is:inline>
-  document.addEventListener("DOMContentLoaded", addFaqInteraction);
-  document.addEventListener("astro:after-swap", addFaqInteraction);
+<script>
+  document.addEventListener("astro:page-load", addFaqInteraction);
 
   function addFaqInteraction() {
     const questions = document.querySelectorAll(".faq-question");

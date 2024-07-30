@@ -2,7 +2,6 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import Layout from "../../layouts/BaseLayout.astro";
 import NavBar from "../../components/NavBar.astro";
-import FaqInteraction from "../../components/FaqInteraction.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("articles");
@@ -18,13 +17,10 @@ const { Content } = await post.render();
 ---
 
 <Layout title={post.data.title}>
-  <NavBar active="none">
-    <h2 transition:name="toolheader" style="display: inline-block">
-      <span class="text-gradient">{post.data.title}</span>
-    </h2>
-  </NavBar>
-  <span class="mobile-spacing">
-    <FaqInteraction />
+  <NavBar active="none" />
+  <section class="mobile-spacing">
+    <h2 class="no-spacing">{post.data.title}</h2>
+    <hr class="no-spacing" />
     <Content />
-  </span>
+  </section>
 </Layout>

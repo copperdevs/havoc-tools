@@ -6,8 +6,6 @@ hidden: false
 releaseDate: 2023-12-21
 ---
 
-# Movement Guide
-
 > Having the upper edge in movement can make the difference in a gunfight. Use these techniques in your gameplay to improve!
 
 ## [Basic] Sliding

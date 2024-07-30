@@ -1,0 +1,19 @@
+---
+import FontAwesomeIcon from "../../common-astro/components/FontAwesomeIcon.astro";
+
+interface Props {
+  question: string;
+}
+
+const { question } = Astro.props;
+---
+
+<div>
+  <h3 class="faq-question no-spacing">
+    <FontAwesomeIcon iconName="fa-solid fa-play fa-rotate-by" />
+    {question}
+  </h3>
+  <div class="faq-answer no-spacing">
+    <slot />
+  </div>
+</div>
