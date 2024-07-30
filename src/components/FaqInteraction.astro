@@ -1,4 +1,4 @@
-<script>
+<script is:inline>
   document.addEventListener("astro:page-load", addFaqInteraction);
 
   function addFaqInteraction() {
@@ -9,10 +9,25 @@
         const answer = this.nextElementSibling;
         if (answer.style.display === "block") {
           answer.style.display = "none";
+          setIconState(question, false);
         } else {
           answer.style.display = "block";
+          setIconState(question, true);
         }
       });
     });
+  }
+
+  function setIconState(targetElement, isOpen) {
+    const notOpenIcon = targetElement.querySelector("#not-open-icon");
+    const openIcon = targetElement.querySelector("#open-icon");
+
+    if (isOpen) {
+      notOpenIcon.style.display = "none";
+      openIcon.style.display = "inline";
+    } else {
+      notOpenIcon.style.display = "inline";
+      openIcon.style.display = "none";
+    }
   }
 </script>

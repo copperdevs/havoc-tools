@@ -10,7 +10,15 @@ const { question } = Astro.props;
 
 <div>
   <h3 class="faq-question no-spacing">
-    <FontAwesomeIcon iconName="fa-solid fa-play fa-rotate-by" />
+
+    <span id="not-open-icon" style="display: inline">
+      <FontAwesomeIcon iconName="fa-solid fa-play" />
+    </span>
+    
+    <span id="open-icon" style="display: none">
+      <FontAwesomeIcon iconName="fa-solid fa-play fa-rotate-90" />
+    </span>
+
     {question}
   </h3>
   <div class="faq-answer no-spacing">
