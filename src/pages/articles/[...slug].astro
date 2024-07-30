@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import Layout from "../../layouts/BaseLayout.astro";
 import NavBar from "../../components/NavBar.astro";
+import FaqInteraction from "../../components/FaqInteraction.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("articles");
@@ -23,6 +24,7 @@ const { Content } = await post.render();
     </h2>
   </NavBar>
   <span class="mobile-spacing">
+    <FaqInteraction />
     <Content />
   </span>
 </Layout>
