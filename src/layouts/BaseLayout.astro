@@ -9,6 +9,7 @@ import { ViewTransitions } from "astro:transitions";
 import "../../common-astro/style/style.css";
 import FontAwesome from "../../common-astro/components/FontAwesome.astro";
 import LinkRedirect from "../../common-astro/components/LinkRedirect.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <!doctype html>
@@ -23,12 +24,17 @@ import LinkRedirect from "../../common-astro/components/LinkRedirect.astro";
     <FontAwesome projectId="45b7384014" />
   </head>
   <body>
-    <main>
-      <LinkRedirect
-        badUrls={["havoc-tools.pages.dev"]}
-        targetUrl="havoc-tools.copperdevs.com"
-      />
-      <slot />
-    </main>
+    <div class="content">
+      <main>
+        <LinkRedirect
+          badUrls={["havoc-tools.pages.dev"]}
+          targetUrl="havoc-tools.copperdevs.com"
+        />
+        <slot />
+      </main>
+    </div>
+    <div class="footer">
+      <Footer />
+    </div>
   </body>
 </html>

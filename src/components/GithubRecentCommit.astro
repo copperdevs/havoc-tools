@@ -1,0 +1,19 @@
+---
+import FontAwesomeIcon from "../../common-astro/components/FontAwesomeIcon.astro";
+import {
+  getMostRecentCommitName,
+  getMostRecentCommitUrl,
+} from "../../common-astro/lib/github.ts";
+
+const repoPath = "copperdevs/havoc-tools";
+
+const commitName = await getMostRecentCommitName(repoPath);
+const commitUrl = await getMostRecentCommitUrl(repoPath);
+---
+
+<div class="color-white">
+  <a href={commitUrl}>
+    <FontAwesomeIcon iconName="fa-solid fa-code-branch" />
+    <span>{commitName}</span>
+  </a>
+</div>
