@@ -18,7 +18,6 @@ const toolsCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    creator: z.string(),
     hidden: z.boolean()
   }),
 });

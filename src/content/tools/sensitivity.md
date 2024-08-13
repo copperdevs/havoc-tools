@@ -1,7 +1,6 @@
 ---
 title: "Sensitivity Calculator"
 description: "Calculator for converting other games sensitivity to havoc"
-creator: "me"
 hidden: false
 ---
 
